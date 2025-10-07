@@ -30,6 +30,9 @@
   "dependencies": {
     "effect": "3.18.4"
   },
+  "optionalDependencies": {
+    "@google-cloud/secret-manager": "^6.1.0"
+  },
   "devDependencies": {
     "@babel/cli": "7.24.8",
     "@babel/core": "7.25.2",
