@@ -1,8 +1,11 @@
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 import type { Array } from "effect"
-import { ConfigProvider, Effect, flow, Layer, Option, pipe } from "effect"
+import { ConfigProvider, Context, Effect, flow, Layer, Option, pipe } from "effect"
 
-const secretMap = new Map<string, string>()
+export class SecretMap extends Context.Reference<SecretMap>()(
+  "@inato/GcpSecretManagerConfigProvider/SecretMap",
+  { defaultValue: () => new Map<string, string>() }
+) {}
 
 const fromSecretManager = Effect.fn(function*({
   projectId,
@@ -17,6 +20,8 @@ const fromSecretManager = Effect.fn(function*({
     Effect.sync(() => new SecretManagerServiceClient()),
     (client) => Effect.promise(() => client.close())
   )
+
+  const secretMap = yield* SecretMap
 
   const getSecret = (name: string) =>
     pipe(
