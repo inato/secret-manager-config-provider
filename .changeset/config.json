@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "@inato/secret-manager-config-provider"
+      "repo": "inato/secret-manager-config-provider"
     }
   ],
   "commit": false,
