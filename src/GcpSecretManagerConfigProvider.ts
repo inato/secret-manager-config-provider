@@ -9,13 +9,15 @@ export class SecretMap extends Context.Reference<SecretMap>()(
 
 export type SecretInput = string | { nameInSecretManager: string; nameInConfig: string }
 
+export interface ConfigProviderInput {
+  projectId: string
+  secrets: Array.NonEmptyReadonlyArray<SecretInput>
+}
+
 const fromSecretManager = Effect.fn(function*({
   projectId,
   secrets
-}: {
-  projectId: string
-  secrets: Array.NonEmptyReadonlyArray<SecretInput>
-}) {
+}: ConfigProviderInput) {
   const secretManagerClient = yield* Effect.acquireRelease(
     Effect.sync(() => new SecretManagerServiceClient()),
     (client) => Effect.promise(() => client.close())
@@ -58,3 +60,11 @@ export const layerGcpWithEnvFallback = flow(
   Effect.map(Layer.setConfigProvider),
   Layer.unwrapScoped
 )
+
+export const layerGcpWithJsonFallback = ({ json, projectId, secrets }: ConfigProviderInput & { json: unknown }) =>
+  pipe(
+    fromSecretManager({ projectId, secrets }),
+    Effect.map(ConfigProvider.orElse(() => ConfigProvider.fromJson(json))),
+    Effect.map(Layer.setConfigProvider),
+    Layer.unwrapScoped
+  )
