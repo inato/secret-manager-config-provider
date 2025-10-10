@@ -32,10 +32,8 @@
     "changeset-publish": "pnpm build && changeset publish"
   },
   "peerDependencies": {
-    "effect": "^3.18.0"
-  },
-  "optionalDependencies": {
-    "@google-cloud/secret-manager": "^6.1.0"
+    "effect": "^3.18.0",
+    "@google-cloud/secret-manager": "^6"
   },
   "devDependencies": {
     "@babel/cli": "7.24.8",
