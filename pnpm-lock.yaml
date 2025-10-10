@@ -12,6 +12,10 @@ patchedDependencies:
 importers:
 
   .:
+    dependencies:
+      effect:
+        specifier: ^3.18.0
+        version: 3.18.4
     devDependencies:
       '@babel/cli':
         specifier: 7.24.8
@@ -40,9 +44,6 @@ importers:
       '@effect/language-service':
         specifier: latest
         version: 0.43.1
-      '@effect/vitest':
-        specifier: 0.25.1
-        version: 0.25.1(effect@3.18.4)(vitest@3.2.0(@types/node@22.5.2)(tsx@4.17.0))
       '@eslint/compat':
         specifier: 1.1.1
         version: 1.1.1
@@ -64,9 +65,6 @@ importers:
       babel-plugin-annotate-pure-calls:
         specifier: 0.5.0
         version: 0.5.0(@babel/core@7.25.2)
-      effect:
-        specifier: 3.18.4
-        version: 3.18.4
       eslint:
         specifier: 9.10.0
         version: 9.10.0
@@ -290,12 +288,6 @@ packages:
   '@effect/language-service@0.43.1':
     resolution: {integrity: sha512-5i1wcxXiM9UH+uaXvhAGONfJmea1UvXbBXtywoqepibnFvq1+zvI753YCoYseS9TzMkmsnCQNUZonlmEgaS3/g==}
     hasBin: true
-
-  '@effect/vitest@0.25.1':
-    resolution: {integrity: sha512-OMYvOU8iGed8GZXxgVBXlYtjG+jwWj5cJxFk0hOHOfTbCHXtdCMEWlXNba5zxbE7dBnW4srbnSYrP/NGGTC3qQ==}
-    peerDependencies:
-      effect: ^3.17.7
-      vitest: ^3.2.0
 
   '@esbuild/aix-ppc64@0.23.1':
     resolution: {integrity: sha512-6VhYk1diRqrhBAqpJEdjASR/+WVRtfjpqKuNw11cLiaWpAT/Uu+nokB+UJnevzy/P9C/ty6AOe0dwueMrGh/iQ==}
@@ -3258,11 +3250,6 @@ snapshots:
       prettier-linter-helpers: 1.0.0
 
   '@effect/language-service@0.43.1': {}
-
-  '@effect/vitest@0.25.1(effect@3.18.4)(vitest@3.2.0(@types/node@22.5.2)(tsx@4.17.0))':
-    dependencies:
-      effect: 3.18.4
-      vitest: 3.2.0(@types/node@22.5.2)(tsx@4.17.0)
 
   '@esbuild/aix-ppc64@0.23.1':
     optional: true
