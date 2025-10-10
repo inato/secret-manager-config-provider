@@ -1,5 +1,11 @@
 # @inato/secret-manager-config-provider
 
+## 0.1.2
+
+### Patch Changes
+
+- [`dc5aa12`](https://github.com/inato/secret-manager-config-provider/commit/dc5aa122ea5b5e67a80a2feb8235b86fb2ba123c) Thanks @jrmdayn! - make google secret manager a peer dep
+
 ## 0.1.1
 
 ### Patch Changes
