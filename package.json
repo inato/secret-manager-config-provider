@@ -28,7 +28,7 @@
     "lint-fix": "pnpm lint --fix",
     "test": "vitest",
     "coverage": "vitest --coverage",
-    "changeset-version": "changeset version && node scripts/version.mjs",
+    "changeset-version": "changeset version",
     "changeset-publish": "pnpm build && changeset publish"
   },
   "peerDependencies": {
