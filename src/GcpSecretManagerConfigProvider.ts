@@ -7,14 +7,14 @@ export class SecretMap extends Context.Reference<SecretMap>()(
   { defaultValue: () => new Map<string, string>() }
 ) {}
 
+export type SecretInput = string | { nameInSecretManager: string; nameInConfig: string }
+
 const fromSecretManager = Effect.fn(function*({
   projectId,
   secrets
 }: {
   projectId: string
-  secrets: Array.NonEmptyReadonlyArray<
-    string | { nameInSecretManager: string; nameInConfig: string }
-  >
+  secrets: Array.NonEmptyReadonlyArray<SecretInput>
 }) {
   const secretManagerClient = yield* Effect.acquireRelease(
     Effect.sync(() => new SecretManagerServiceClient()),
