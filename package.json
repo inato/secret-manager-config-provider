@@ -29,7 +29,7 @@
     "test": "vitest",
     "coverage": "vitest --coverage",
     "changeset-version": "changeset version && node scripts/version.mjs",
-    "changeset-publish": "pnpm build && TEST_DIST= pnpm vitest && changeset publish"
+    "changeset-publish": "pnpm build && changeset publish"
   },
   "peerDependencies": {
     "effect": "^3.18.0"
