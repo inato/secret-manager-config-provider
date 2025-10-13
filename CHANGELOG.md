@@ -1,5 +1,11 @@
 # @inato/secret-manager-config-provider
 
+## 0.2.0
+
+### Minor Changes
+
+- [#7](https://github.com/inato/secret-manager-config-provider/pull/7) [`a48bf77`](https://github.com/inato/secret-manager-config-provider/commit/a48bf772997167d738af50ec2dec4e96a75b28a4) Thanks @jrmdayn! - add layerGcpWithJsonFallback
+
 ## 0.1.2
 
 ### Patch Changes
