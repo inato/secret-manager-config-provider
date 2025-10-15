@@ -1,5 +1,11 @@
 # @inato/secret-manager-config-provider
 
+## 0.3.0
+
+### Minor Changes
+
+- [#9](https://github.com/inato/secret-manager-config-provider/pull/9) [`7ec44c3`](https://github.com/inato/secret-manager-config-provider/commit/7ec44c3be932bebdc6e2a647b50931f0423648d8) Thanks @jrmdayn! - Use OIDC / trusted publishers for gh actions
+
 ## 0.2.0
 
 ### Minor Changes
