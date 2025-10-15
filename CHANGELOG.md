@@ -1,5 +1,11 @@
 # @inato/secret-manager-config-provider
 
+## 0.3.1
+
+### Patch Changes
+
+- [`4c699a9`](https://github.com/inato/secret-manager-config-provider/commit/4c699a91589fb430aa118c3135fa32a4873f8301) Thanks @jrmdayn! - fix publishing
+
 ## 0.3.0
 
 ### Minor Changes
