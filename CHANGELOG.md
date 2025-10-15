@@ -1,5 +1,11 @@
 # @inato/secret-manager-config-provider
 
+## 0.3.2
+
+### Patch Changes
+
+- [`498e463`](https://github.com/inato/secret-manager-config-provider/commit/498e4638b338c5f77a20b4b73240ba2ea378424b) Thanks @jrmdayn! - remove NPM_TOKEN
+
 ## 0.3.1
 
 ### Patch Changes
