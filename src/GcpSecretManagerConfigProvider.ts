@@ -18,12 +18,12 @@ const fromSecretManager = Effect.fn(function*({
   projectId,
   secrets
 }: ConfigProviderInput) {
+  const secretMap = yield* SecretMap
+
   const secretManagerClient = yield* Effect.acquireRelease(
     Effect.sync(() => new SecretManagerServiceClient()),
     (client) => Effect.promise(() => client.close())
   )
-
-  const secretMap = yield* SecretMap
 
   const getSecret = (name: string) =>
     pipe(
@@ -32,18 +32,23 @@ const fromSecretManager = Effect.fn(function*({
           name: `projects/${projectId}/secrets/${name}/versions/latest`
         })
       ),
-      Effect.flatMap(([secret]) => Option.fromNullable(secret.payload?.data?.toString())),
-      Effect.orDie
+      Effect.flatMap(([secret]) => Option.fromNullable(secret.payload?.data?.toString()))
     )
 
-  yield* Effect.forEach(secrets, (name) =>
-    Effect.gen(function*() {
-      const nameInConfig = typeof name === "string" ? name : name.nameInConfig
-      if (!secretMap.has(nameInConfig)) {
+  yield* Effect.forEach(
+    secrets,
+    (name) =>
+      Effect.gen(function*() {
+        const nameInConfig = typeof name === "string" ? name : name.nameInConfig
         const nameInSecretManager = typeof name === "string" ? name : name.nameInSecretManager
-        secretMap.set(nameInConfig, yield* getSecret(nameInSecretManager))
-      }
-    }))
+        const secretResult = yield* Effect.option(getSecret(nameInSecretManager))
+
+        if (Option.isSome(secretResult)) {
+          secretMap.set(nameInConfig, secretResult.value)
+        }
+      }),
+    { concurrency: "unbounded" }
+  )
 
   return ConfigProvider.fromMap(secretMap)
 })
