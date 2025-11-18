@@ -1,5 +1,11 @@
 # @inato/secret-manager-config-provider
 
+## 0.3.3
+
+### Patch Changes
+
+- [#14](https://github.com/inato/secret-manager-config-provider/pull/14) [`1e20aaf`](https://github.com/inato/secret-manager-config-provider/commit/1e20aaf2e3cde207879d4b4808e50c59399161f6) Thanks @FredericEspiau! - fix: whenever an Error happens when trying to resolve a secret, its fallbacks on .env or the JSON file should work fine now
+
 ## 0.3.2
 
 ### Patch Changes
